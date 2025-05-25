@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FilmFestivalSchedule",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date of the festival day, e.g., 'SAMSTAG, 25.01.2025'"
+    },
+    "locations": {
+      "type": "array",
+      "description": "List of screening locations",
+      "items": {
+        "type": "object",
+        "properties": {
+          "locationName": {
+            "type": "string",
+            "description": "Name of the cinema or venue, e.g., 'CineStar 1'"
+          },
+          "screenings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "startTime": {
+                  "type": "string",
+                  "description": "Start time of the screening, e.g., '15:00'"
+                },
+                "programType": {
+                  "type": "string",
+                  "description": "Program type, e.g., 'WB SF' or 'Watchlist'"
+                },
+                "filmTitle": {
+                  "type": "string",
+                  "description": "Film title, e.g., 'CALLAS, DARLING'"
+                },
+                "duration": {
+                  "type": "string",
+                  "description": "Film duration, e.g., '89 Min.'"
+                },
+                "additionalNotes": {
+                  "type": "string",
+                  "description": "Any additional notes or tags for the film, optional",
+                  "nullable": true
+                }
+              },
+              "required": ["startTime", "programType", "filmTitle", "duration"]
+            }
+          }
+        },
+        "required": ["locationName", "screenings"]
+      }
+    }
+  },
+  "required": ["date", "locations"]
+}
